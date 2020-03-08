@@ -24,9 +24,9 @@ void exit();
 int main()
 {
 	system("cls");
-	printf("\n\n\n\n");
+	printf("\n\n");
 	printf("\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
-	printf("          \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
+	printf("        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
 	int ch;
 	scanf("%d",&ch);
 	if(ch==1)
@@ -40,7 +40,7 @@ int main()
 void main_loges()
 {
 	system("cls");
-	printf("\n\n\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
+	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
 	printf("\n\n");
 	Sleep(250);
 	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY PANEL\n");
@@ -49,8 +49,8 @@ void main_loges()
 	Sleep(350);
 	printf("                \t\t\t\t\t\t\t\t\t 3. FOR WINNER\n");
 	Sleep(350);
-	printf("                 \t\t\t\t\t\t\t\t\t 4. FOR EXIT\n\n\n\n");
-	Sleep(400);
+	printf("                 \t\t\t\t\t\t\t\t\t 4. FOR EXIT\n\n");
+	Sleep(300);
 	printf("\n\t\t\t\t\t\t\t             ********************* PLEASE ENTER YOUR CHOICE *********************\n");
 	int n;
 	scanf("%d",&n);
@@ -89,5 +89,11 @@ void winner()
 
 void exit()
 {
-	
+	system("cls");
+	Sleep(150);
+	printf("\n\n\t\t\t\t\t\t\t\t******************************* NATIONAL VOTING PORTAL *******************************\n");
+	Sleep(250);
+	printf("\n\n\t\t\t\t\t\t\t\t\t        *************** THANK YOU FOR VISITING  ***************\n");
+	Sleep(300);
+	printf("\n\n\t\t\t\t\t\t\t\t\t           *************** HAVE A NICE DAY ***************");
 }
