@@ -1,2 +1,93 @@
 #include<stdio.h>
+#include<string.h>
+#include<conio.h>
+#include<windows.h>
 #include<stdlib.h>
+
+typedef struct voter_details
+{
+	char national_id[15];
+	char name[30];
+	char father_name[30];
+	char birth_date[10];
+	char mother_name[15];
+	struct voter_detail *next;
+}voter;
+voter *head;
+
+void main_loges();
+void vote_insert();
+void admin_panel();
+void winner();
+void exit();
+
+int main()
+{
+	system("cls");
+	printf("\n\n\n\n");
+	printf("\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
+	printf("          \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
+	int ch;
+	scanf("%d",&ch);
+	if(ch==1)
+	{
+		main_loges();
+	}
+	return 0;
+}
+
+
+void main_loges()
+{
+	system("cls");
+	printf("\n\n\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
+	printf("\n\n");
+	Sleep(250);
+	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY PANEL\n");
+	Sleep(350);
+	printf("               \t\t\t\t\t\t\t\t\t\t 2. FOR ADMIN PANEL\n");
+	Sleep(350);
+	printf("                \t\t\t\t\t\t\t\t\t 3. FOR WINNER\n");
+	Sleep(350);
+	printf("                 \t\t\t\t\t\t\t\t\t 4. FOR EXIT\n\n\n\n");
+	Sleep(400);
+	printf("\n\t\t\t\t\t\t\t             ********************* PLEASE ENTER YOUR CHOICE *********************\n");
+	int n;
+	scanf("%d",&n);
+	if(n==1)
+	{
+		vote_insert();
+	}
+	else if(n==2)
+	{
+		admin_panel();
+	}
+	else if(n==3)
+	{
+		winner();
+	}
+	else if(n==4)
+	{
+		exit();
+	}
+}
+
+void vote_insert()
+{
+	
+}
+
+void admin_panel()
+{
+	
+}
+
+void winner()
+{
+	
+}
+
+void exit()
+{
+	
+}
