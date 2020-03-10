@@ -10,7 +10,6 @@ typedef struct voter_details
 	char name[30];
 	char father_name[30];
 	char birth_date[10];
-	char mother_name[15];
 	struct voter_detail *next;
 }voter;
 voter *head;
