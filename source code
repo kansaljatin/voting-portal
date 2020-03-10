@@ -17,15 +17,18 @@ voter *head;
 void main_loges();
 void vote_insert();
 void admin_panel();
+void vote_count();
 void winner();
 void exit();
+
+int a=0,b=0,c=0,d=0;
 
 int main()
 {
 	system("cls");
 	printf("\n\n");
 	printf("\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
-	printf("        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
+	printf("\n        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
 	int ch;
 	scanf("%d",&ch);
 	if(ch==1)
@@ -79,39 +82,48 @@ void vote_insert()
 void admin_panel()
 {
 	system("cls");
-	int p;char id[10];
+	int i;
+	char p[9];char id[10],ch;
 	printf("\n\n");
 	printf("\t\t\t\t\t\t                   ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
 	Sleep(350);
 	printf("\n\t\t\t\t\t\t      ************************ PLEASE ENTER FOLLOWING CREDENTIALS TO UNLOCK ADMIN PANEL ************************\n\n");
 	Sleep(350);
-	printf("\n\t\t\t\t\t\t\t");
-	printf("ID       :: ");
+	printf("\n\t\t\t\t\t\t\t\t\t");
+	printf("ID\t\t       :: ");
 	scanf("%s",&id);
 	Sleep(150);
-	printf("\n\t\t\t\t\t\t\t");
-	printf("PASSWORD :: ");
-	scanf("%d",&p);
-	if(strcmp(id,"jatin765")==0 && p==872001)
+	printf("\n\t\t\t\t\t\t\t\t\t");
+	printf("PASSWORD(8 CHARACTERS) :: ");
+	for(i=0;i<8;i++)
+	{
+		ch=getch();
+		p[i]=ch;
+		char ch='*';
+		printf("%c",ch);
+	}
+	p[i]='\0';
+	
+	if(strcmp(id,"jatin765")==0 && strcmp(p,"08072001")==0)
 	{
 		system("cls");
+		Sleep(100);
 		printf("\n\n\t\t\t\t\t\t\t\t\t**************************** ACCESS GRANTED ****************************");	
-		Sleep(600);
+		Sleep(400);
 		printf("\n\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
 		Sleep(350);
 		printf("\n\t\t\t\t\t\t\t                   ********************* WELCOME TO THE ADMIN PANEL *********************\n\n\n");
-		//vote_count();
-	
+		vote_count();
 	}
 	else
 	{	
 		system("cls");
-		int ch1;
 		printf("\n\t\t\t\t\t\t\t\t      **************************** INVALID ID OR PASSWORD ****************************");
 		Sleep(400);
-		printf("\n\n\n\t\t\t\t\t\t\t\t\t   ************************** ACCESS DENIED **************************");
+		printf("\n\n\n\t\t\t\t\t\t\t\t\t     ************************** ACCESS DENIED **************************");
 		Sleep(400);
 		printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
+		int ch1;
 		scanf("%d",&ch1);
 		if(ch1==1)
 		{
@@ -121,8 +133,83 @@ void admin_panel()
 			
 }
 
+void vote_count()
+{
+	Sleep(400);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("CANDIDATE NAME");
+	printf("\t\t\t");
+	printf("NO. OF VOTES");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("NARENDRA MODI");
+	printf("\t\t\t     ");
+	printf("%d",a);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("RAHUL GANDHI");
+	printf("\t\t\t\t     ");
+	printf("%d",b);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("ARVIND KEJRIWAL");
+	printf("\t\t\t     ");
+	printf("%d",c);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("NOTA");
+	printf("\t\t\t\t\t     ");
+	printf("%d",d);
+	printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
+	int ch2;
+	scanf("%d",&ch2);
+	if(ch2==1)
+	{
+		main_loges();
+	}
+		
+}
+
 void winner()
 {
+	system("cls");
+	Sleep(150);
+	int w[4],i,l,p;
+	char name[4][20];
+	w[0]=a;
+	w[1]=b;
+	w[2]=c;
+	w[3]=d;
+	strcpy(name[0],"NARENDRA MODI");
+	strcpy(name[1],"RAHUL GANDHI");
+	strcpy(name[2],"ARVIND KEJRIWAL");
+	strcpy(name[3],"NOTA");
+	l=w[0];
+	p=0;
+	for(i=1;i<4;i++)
+	{
+		if(w[i]>l)
+		{
+			l=w[i];
+			p=i;	
+		}	
+	}	
+	printf("\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t\t\t\t    ********************* WINNER OF THE ELECTION *********************");
+	printf("\n\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	Sleep(300);
+	printf("CANDIDATE NAME");
+	printf("\t\t\t");
+	printf("NO. OF VOTES");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	Sleep(300);
+	printf(name[p]);
+	printf("\t\t\t     ");
+	printf("%d",l);
+	printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
+	int ch3;
+	scanf("%d",&ch3);
+	if(ch3==1)
+	{
+		main_loges();
+	}
 	
 }
 
