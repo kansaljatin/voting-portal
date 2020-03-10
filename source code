@@ -42,9 +42,9 @@ void main_loges()
 	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
 	printf("\n\n");
 	Sleep(250);
-	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY PANEL\n");
+	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY \n");
 	Sleep(350);
-	printf("               \t\t\t\t\t\t\t\t\t\t 2. FOR ADMIN PANEL\n");
+	printf("               \t\t\t\t\t\t\t\t\t\t 2. FOR ADMIN LOGIN\n");
 	Sleep(350);
 	printf("                \t\t\t\t\t\t\t\t\t 3. FOR WINNER\n");
 	Sleep(350);
@@ -78,7 +78,47 @@ void vote_insert()
 
 void admin_panel()
 {
+	system("cls");
+	int p;char id[10];
+	printf("\n\n");
+	printf("\t\t\t\t\t\t                   ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t      ************************ PLEASE ENTER FOLLOWING CREDENTIALS TO UNLOCK ADMIN PANEL ************************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t\t");
+	printf("ID       :: ");
+	scanf("%s",&id);
+	Sleep(150);
+	printf("\n\t\t\t\t\t\t\t");
+	printf("PASSWORD :: ");
+	scanf("%d",&p);
+	if(strcmp(id,"jatin765")==0 && p==872001)
+	{
+		system("cls");
+		printf("\n\n\t\t\t\t\t\t\t\t\t**************************** ACCESS GRANTED ****************************");	
+		Sleep(600);
+		printf("\n\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
+		Sleep(350);
+		printf("\n\t\t\t\t\t\t\t                   ********************* WELCOME TO THE ADMIN PANEL *********************\n\n\n");
+		//vote_count();
 	
+	}
+	else
+	{	
+		system("cls");
+		int ch1;
+		printf("\n\t\t\t\t\t\t\t\t      **************************** INVALID ID OR PASSWORD ****************************");
+		Sleep(400);
+		printf("\n\n\n\t\t\t\t\t\t\t\t\t   ************************** ACCESS DENIED **************************");
+		Sleep(400);
+		printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
+		scanf("%d",&ch1);
+		if(ch1==1)
+		{
+			main_loges();
+		}
+	}
+			
 }
 
 void winner()
