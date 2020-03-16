@@ -1,0 +1,18 @@
+S.NO.    NATIONAL ID      NAME             FATHER'S NAME      DATE OF BIRTH    
+ 1.	 ABC4567890      Rohan Bansal      Ajay Bansal        05/09/2000
+ 2.	 DEF1237890      Shivam Chauhan    Arun Chauhan       08/05/2001
+ 3.	 GHI4987810      Jayesh Agarwal    Anil Agarwal       05/02/1996
+ 4.      FEG9562820      Akshay Sharma     Ajit Sharma        03/06/1997
+ 5.	 JLK8867370      Rahul Mittal      Manoj Mittal       21/04/2000	
+ 6.	 ZAB4987460      Keshav Goel       Umesh Goel         23/09/1998
+ 7.	 BGH4666590      Neha Bansal       Virat Bansal       16/07/1994
+ 8.	 ERI8956280      Radha Yadav       Mohit Yadav        24/01/2000
+ 9.	 WXY6589362      Sachin Singh      Deepak Singh       25/03/1998
+ 10.	 NJK1325698      Manav Malhotra    Sagar Malhotra     11/02/1994
+ 11.	 QAD3654128      Parvesh Mittal    Prateek Mittal     23/07/1995
+ 12.	 LMJ1986257      Naman Singh       Mahesh Singh       28/02/1993
+ 13.	 MLX4697258      Vansh Bansal      Ram Bansal         18/06/1996
+ 14.	 ERG9682359      Radhika Kansal    Pawan Kansal       27/03/1991
+ 15.	 CNB6597895      Priya Goel        Raj Goel           25/09/1992
+
+
