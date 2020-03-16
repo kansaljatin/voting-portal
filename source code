@@ -4,28 +4,44 @@
 #include<windows.h>
 #include<stdlib.h>
 
-typedef struct voter_details
+struct voter_detail
 {
 	char national_id[15];
 	char name[30];
 	char father_name[30];
 	char birth_date[10];
 	struct voter_detail *next;
-}voter;
-voter *head;
+};
+struct voter_detail voter,*head;
 
 void main_loges();
 void vote_insert();
+int check();
+void given();
+void voting();
+void congratulation();
 void admin_panel();
 void vote_count();
 void winner();
+void tie(int[],char[][20],int);
 void exit();
 
 int a=0,b=0,c=0,d=0;
+int f[4];
+char id[10];
 
 int main()
 {
-	system("cls");
+	FILE *fp;
+	fp=fopen("VOTE_COUNT.txt","r+");
+	int i;
+	for(i=0;i<4;i++)
+	fscanf(fp,"%d",&f[i]);
+	fclose(fp);
+	a=f[0];
+	b=f[1];
+	c=f[2];
+	d=f[3];
 	printf("\n\n");
 	printf("\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
 	printf("\n        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
@@ -38,22 +54,23 @@ int main()
 	return 0;
 }
 
-
 void main_loges()
 {
 	system("cls");
 	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
 	printf("\n\n");
 	Sleep(250);
-	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY \n");
+	printf("              \t\t\t\t\t\t\t\t\t\t 1. FOR VOTE ENTRY \n\n");
 	Sleep(350);
-	printf("               \t\t\t\t\t\t\t\t\t\t 2. FOR ADMIN LOGIN\n");
+	printf("               \t\t\t\t\t\t\t\t\t\t 2. FOR ADMIN LOGIN\n\n");
 	Sleep(350);
-	printf("                \t\t\t\t\t\t\t\t\t 3. FOR WINNER\n");
+	printf("                \t\t\t\t\t\t\t\t\t 3. FOR WINNER\n\n");
 	Sleep(350);
-	printf("                 \t\t\t\t\t\t\t\t\t 4. FOR EXIT\n\n");
+	printf("                 \t\t\t\t\t\t\t\t\t 4. FOR EXIT\n\n\n");
 	Sleep(300);
 	printf("\n\t\t\t\t\t\t\t             ********************* PLEASE ENTER YOUR CHOICE *********************\n");
+	Sleep(300);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\tYOUR CHOICE(1/2/3/4) :: ");
 	int n;
 	scanf("%d",&n);
 	if(n==1)
@@ -76,24 +93,249 @@ void main_loges()
 
 void vote_insert()
 {
+	system("cls");
+	struct voter_detail *temp;
+	char national_id[15],name[30],birth_date[10],father_name[30];
+	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
+	printf("\n\n");
+	Sleep(400);
+	printf("\t\t\t\t\t\t        ************************ PLEASE ENTER FOLLOWING CREDENTIALS TO GIVE VOTE ************************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t\t\t\t\t");
+	printf("  NATIONAL ID\t            :: ");
+	gets(national_id);
+	gets(national_id);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t  NAME\t\t            :: ");
+	gets(name);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t  FATHER'S NAME\t            :: ");
+	gets(father_name);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t  DATE OF BIRTH(dd/mm/yyyy) :: ");
+	gets(birth_date);
+	temp=(struct voter_detail*)malloc(sizeof(voter));
+	strcpy(temp->national_id,national_id);
+	strcpy(id,temp->national_id);
+	strcpy(temp->name,name);
+	strcpy(temp->father_name,father_name);
+	strcpy(temp->birth_date,birth_date);
+	temp->next=NULL;
+	head=temp;
+	while(temp!=NULL)
+	{
+		if(strcmp(temp->national_id,"ABC4567890")==0 && strcmp(temp->name,"Rohan Bansal")==0 && strcmp(temp->father_name,"Ajay Bansal")==0 && strcmp(temp->birth_date,"05/09/2000")==0 ||
+		strcmp(temp->national_id,"DEF1237890")==0 && strcmp(temp->name,"Shivam Chauhan")==0 && strcmp(temp->father_name,"Arun Chauhan")==0 && strcmp(temp->birth_date,"08/05/2001")==0 ||
+		strcmp(temp->national_id,"GHI4987810")==0 && strcmp(temp->name,"Jayesh Agarwal")==0 && strcmp(temp->father_name,"Anil Agarwal")==0 && strcmp(temp->birth_date,"05/02/1996")==0 ||
+		strcmp(temp->national_id,"FEG9562820")==0 && strcmp(temp->name,"Akshay Sharma")==0 && strcmp(temp->father_name,"Ajit Sharma")==0 && strcmp(temp->birth_date,"03/06/1997")==0 ||
+		strcmp(temp->national_id,"JLK8867370")==0 && strcmp(temp->name,"Rahul Mittal")==0 && strcmp(temp->father_name,"Manoj Mittal")==0 && strcmp(temp->birth_date,"21/04/2000")==0 ||	
+		strcmp(temp->national_id,"ZAB4987460")==0 && strcmp(temp->name,"Keshav Goel")==0 && strcmp(temp->father_name,"Umesh Goel")==0 && strcmp(temp->birth_date,"23/09/1998")==0 ||
+		strcmp(temp->national_id,"BGH4666590")==0 && strcmp(temp->name,"Neha Bansal")==0 && strcmp(temp->father_name,"Virat Bansal")==0 && strcmp(temp->birth_date,"16/07/1994")==0 ||
+		strcmp(temp->national_id,"ERI8956280")==0 && strcmp(temp->name,"Radha Yadav")==0 && strcmp(temp->father_name,"Mohit Yadav")==0 && strcmp(temp->birth_date,"24/01/2000")==0 ||
+		strcmp(temp->national_id,"WXY6589362")==0 && strcmp(temp->name,"Sachin Singh")==0 && strcmp(temp->father_name,"Deepak Singh")==0 && strcmp(temp->birth_date,"25/03/1998")==0 ||
+		strcmp(temp->national_id,"NJK1325698")==0 && strcmp(temp->name,"Manav Malhotra")==0 && strcmp(temp->father_name,"Sagar Malhotra")==0 && strcmp(temp->birth_date,"11/02/1994")==0 ||
+		strcmp(temp->national_id,"QAD3654128")==0 && strcmp(temp->name,"Parvesh Mittal")==0 && strcmp(temp->father_name,"Prateek Mittal")==0 && strcmp(temp->birth_date,"23/07/1995")==0 ||
+		strcmp(temp->national_id,"LMJ1986257")==0 && strcmp(temp->name,"Naman Singh")==0 && strcmp(temp->father_name,"Mahesh Singh")==0 && strcmp(temp->birth_date,"28/02/1993")==0 ||
+		strcmp(temp->national_id,"MLX4697258")==0 && strcmp(temp->name,"Vansh Bansal")==0 && strcmp(temp->father_name,"Ram Bansal")==0 && strcmp(temp->birth_date,"18/06/1996")==0 ||
+		strcmp(temp->national_id,"ERG9682359")==0 && strcmp(temp->name,"Radhika Kansal")==0 && strcmp(temp->father_name,"Pawan Kansal")==0 && strcmp(temp->birth_date,"27/03/1991")==0 ||
+		strcmp(temp->national_id,"CNB6597895")==0 && strcmp(temp->name,"Priya Goel")==0 && strcmp(temp->father_name,"Raj Goel ")==0 && strcmp(temp->birth_date,"25/09/1992")==0)
+		{
+			int z;
+			z=check();
+			if(z==0)
+			{
+				voting();
+			
+			}
+			else
+			{
+				given();
+			}	
+		}
+		else
+		{
+			printf("\n\n\n\t\t\t\t\t\t\t\t    *************** ANY ONE OF THE CREDENTIAL ENTERED IS WRONG ***************");
+			printf("\n\n\n\t\t\t\t\t\t\t       **************** TO TRY AGAIN PRESS ONE(1) AND ZERO(0) FOR MAIN LOGES ****************\n");
+			printf("\n\n\t\t\t\t\t\t\t\t\t\tYOUR CHOICE(0/1) :: ");
+			int x;
+			scanf("%d",&x);
+			if(x==1)
+			vote_insert();
+			else if(x==0)
+			main_loges;
+		}
+		temp=temp->next;
+	}
+}
+
+int check()
+{
+	int i,flag=0;
 	
+	FILE *fptr;
+	fptr=fopen("VOTING_RECORD.txt","r+");
+	for(i=0;i<15;i++)
+	{	
+		char c[10];
+		fscanf(fptr,"%s",c);
+		if(strcmp(c,id)==0)
+		{
+			flag++;
+			break;
+		}
+	}
+	fclose(fptr);
+	if(flag==0)
+	{
+		return 0;
+	}
+	else if(flag==1)
+	{
+		return 1;
+	}
+}
+
+void given()
+{
+	system("cls");
+	Sleep(200);
+	printf("\n\n\t\t\t\t\t\t\t\t******************************* NATIONAL VOTING PORTAL *******************************\n");
+	Sleep(200);
+	printf("\n\n\n\t\t\t\t\t\t\t\t  ---------------------------------------------------------------------------------------");
+	Sleep(100);
+	printf("\n\n\n\t\t\t\t\t\t\t\t\t\t\t    YOU HAVE ALREADY GIVEN YOUR VOTE \n");
+	Sleep(200);
+	printf("\n\n\t\t\t\t\t\t\t\t  ----------------------------------------------------------------------------------------");
+	Sleep(200);
+	printf("\n\n\n\n\n\t\t\t\t\t\t\t    ******************** PLEASE ENTER ONE(1) FOR MAIN LOGES AND ZERO(0) FOR EXIT ********************\n");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t       YOUR CHOICE(0/1) :: ");
+	int x;
+	scanf("%d",&x);
+	if(x==1)
+	{
+		main_loges();
+	}
+	else if(x==0)
+	{
+		exit();
+	}
+}
+
+void voting()
+{
+	system("cls");
+	printf("\n\n");
+	printf("\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t\t\t\t\t ******************* LIST OF CANDIDATES *******************");
+	Sleep(400);
+	printf("\n\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("CANDIDATE NAME");
+	printf("\t\t\t     ");
+	printf("SYMBOL");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("1.NARENDRA MODI");
+	printf("\t\t\t     ");
+	printf("1.LOTUS");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("2.RAHUL GANDHI");
+	printf("\t\t\t     ");
+	printf("2.RIGHT PALM");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("3.ARVIND KEJRIWAL");
+	printf("\t\t\t     ");
+	printf("3.BROOM");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+	printf("4.NOTA");
+	printf("\t\t\t\t     ");
+	printf("4.BLACK CROSS");
+	Sleep(300);
+	printf("\n\n\n\t\t\t\t\t\t\t\t             ********************* PLEASE ENTER YOUR CHOICE *********************\n");
+	int n;
+	Sleep(300);
+	printf("\n\n\t\t\t\t\t\t\t\t\t\tYOUR CHOICE(1/2/3/4) :: ");
+	scanf("%d",&n);
+	int flag=0;
+	if(n==1)
+	{
+		a++;
+		flag++;
+		congratulation();
+	}
+	else if(n==2)
+	{
+		b++;
+		flag++;
+		congratulation();
+	}
+	else if(n==3)
+	{
+		c++;
+		flag++;
+		congratulation();
+	}
+	else if(n==4)
+	{
+		d++;
+		flag++;
+		congratulation();
+	}
+	else
+	{
+		printf("\n\n\t\t\t\t\t\t\t\t\t\t      ******************* INVALID CHOICE *******************");
+		Sleep(350);
+		printf("\n\n\n\t\t\t\t\t\t\t\t     ******************** TO TRY AGAIN PRESS ONE(1) AND ZERO(0) FOR MAIN LOGES ********************\n");
+		printf("\n\n\t\t\t\t\t\t\t\t\t\t\t  YOUR CHOICE(0/1) :: ");
+		int x;
+		scanf("%d",&x);
+		if(x==1)
+		vote_insert();
+		else if(x==0)
+		main_loges();
+	}
+	FILE *fp;
+	fp=fopen("VOTE_COUNT.txt","w+");
+	fprintf(fp,"%d",a);
+	fprintf(fp,"\n%d",b);
+	fprintf(fp,"\n%d",c);
+	fprintf(fp,"\n%d",d);
+	fclose(fp);
+	if(flag==1)
+	{
+		FILE *fptr;
+		fptr=fopen("VOTING_RECORD.txt","a+");
+		fprintf(fptr,"%s",id);
+		fprintf(fptr,"\n");
+		fclose(fptr);
+	}
+}
+
+void congratulation()
+{
+	system("cls");
+	Sleep(400);
+	printf("\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
+	Sleep(350);
+	printf("\n\t\t\t\t\t\t\t\t\t     *********************** CONGRATULATIONS ***********************\n");
+	Sleep(350);
+	printf("\n\n\t\t\t\t\t\t\t\t\t***************** YOU HAVE GIVEN YOUR VOTE SUCCESSFULLY *****************");
+	Sleep(350);
+	printf("\n\n\n\t\t\t\t\t\t\t\t\t          *************** THANK YOU FOR VISITING  ***************\n");
+	Sleep(350);
+	printf("\n\n\t\t\t\t\t\t\t\t\t             *************** HAVE A NICE DAY ***************");
 }
 
 void admin_panel()
 {
 	system("cls");
 	int i;
-	char p[9];char id[10],ch;
+	char p[8];char id[10],ch;
 	printf("\n\n");
 	printf("\t\t\t\t\t\t                   ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
 	Sleep(350);
 	printf("\n\t\t\t\t\t\t      ************************ PLEASE ENTER FOLLOWING CREDENTIALS TO UNLOCK ADMIN PANEL ************************\n\n");
 	Sleep(350);
-	printf("\n\t\t\t\t\t\t\t\t\t");
-	printf("ID\t\t       :: ");
+	printf("\n\t\t\t\t\t\t\t\t\t\t");
+	printf("USER ID\t\t       :: ");
 	scanf("%s",&id);
-	Sleep(150);
-	printf("\n\t\t\t\t\t\t\t\t\t");
+	printf("\n\t\t\t\t\t\t\t\t\t\t");
 	printf("PASSWORD(8 CHARACTERS) :: ");
 	for(i=0;i<8;i++)
 	{
@@ -104,7 +346,7 @@ void admin_panel()
 	}
 	p[i]='\0';
 	
-	if(strcmp(id,"jatin765")==0 && strcmp(p,"08072001")==0)
+	if(strcmp(id,"jatin764")==0 && strcmp(p,"08072001")==0)
 	{
 		system("cls");
 		Sleep(100);
@@ -118,16 +360,21 @@ void admin_panel()
 	else
 	{	
 		system("cls");
-		printf("\n\t\t\t\t\t\t\t\t      **************************** INVALID ID OR PASSWORD ****************************");
+		printf("\n\n\t\t\t\t\t\t\t\t      **************************** INVALID ID OR PASSWORD ****************************");
 		Sleep(400);
-		printf("\n\n\n\t\t\t\t\t\t\t\t\t     ************************** ACCESS DENIED **************************");
+		printf("\n\n\n\n\t\t\t\t\t\t\t\t\t    ************************** ACCESS DENIED **************************");
 		Sleep(400);
-		printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
-		int ch1;
-		scanf("%d",&ch1);
-		if(ch1==1)
+		printf("\n\n\n\n\t\t\t\t\t\t\t\t******************** PLEASE ENTER ONE(1) FOR MAIN LOGES AND ZERO(0) FOR EXIT ********************\n");
+		printf("\n\n\n\t\t\t\t\t\t\t\t\t\t       YOUR CHOICE(0/1) :: ");
+		int x;
+		scanf("%d",&x);
+		if(x==1)
 		{
 			main_loges();
+		}
+		else if(x==0)
+		{
+			exit();
 		}
 	}
 			
@@ -156,12 +403,17 @@ void vote_count()
 	printf("NOTA");
 	printf("\t\t\t\t\t     ");
 	printf("%d",d);
-	printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
-	int ch2;
-	scanf("%d",&ch2);
-	if(ch2==1)
+	printf("\n\n\n\n\n\t\t\t\t\t\t\t     ******************** PLEASE ENTER ONE(1) FOR MAIN LOGES AND ZERO(0) FOR EXIT ********************\n");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t       YOUR CHOICE(0/1) :: ");
+	int x;
+	scanf("%d",&x);
+	if(x==1)
 	{
 		main_loges();
+	}
+	else if(x==0)
+	{
+		exit();
 	}
 		
 }
@@ -170,7 +422,7 @@ void winner()
 {
 	system("cls");
 	Sleep(150);
-	int w[4],i,l,p;
+	int w[4],i,l,p,flag=0,m[4];
 	char name[4][20];
 	w[0]=a;
 	w[1]=b;
@@ -189,6 +441,16 @@ void winner()
 			l=w[i];
 			p=i;	
 		}	
+	}
+	for(i=0;i<4;i++)
+	{
+		int k=0;
+		m[p]=0;
+		if(w[i]==l && i!=p)
+		{
+			m[i]=-1;
+			flag++;		
+		}	
 	}	
 	printf("\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
 	Sleep(350);
@@ -199,18 +461,91 @@ void winner()
 	printf("\t\t\t");
 	printf("NO. OF VOTES");
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
-	Sleep(300);
-	printf(name[p]);
-	printf("\t\t\t     ");
-	printf("%d",l);
-	printf("\n\n\n        \t\t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n");	
-	int ch3;
-	scanf("%d",&ch3);
-	if(ch3==1)
+	if(strcmp(name[p],"RAHUL GANDHI")==0)
+	{
+		printf(" ");
+		printf(name[p]);
+		printf("\t\t\t     ");
+		printf("%d",l);
+	}
+	else if(strcmp(name[p],"NOTA")==0)
+	{
+		printf("     ");
+		printf(name[p]);
+		printf("\t\t\t\t     ");
+		printf("%d",l);	
+	}
+	else if(strcmp(name[p],"NARENDRA MODI")==0)
+	{	
+		printf(" ");
+		printf(name[p]);
+		printf("\t\t\t     ");
+		printf("%d",l);	
+	}
+	else
+	{
+		printf(name[p]);
+		printf("\t\t\t     ");
+		printf("%d",l);
+	}
+	if(flag>0)
+	{
+		tie(m,name,l);
+	}
+	printf("\n\n\n\n\t\t\t\t\t\t\t      ******************** PLEASE ENTER ONE(1) FOR MAIN LOGES AND ZERO(0) FOR EXIT ********************\n");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t       YOUR CHOICE(0/1) :: ");
+	int x;
+	scanf("%d",&x);
+	if(x==1)
 	{
 		main_loges();
 	}
+	else if(x==0)
+	{
+		exit();
+	}
+}
 	
+void tie(int m[],char name[4][20],int l)
+{
+	int i;
+	for(i=0;i<4;i++)
+	{
+		if(m[i]==-1)
+		{
+			printf("\n\n\t\t\t\t\t\t\t\t\t\t   ");
+			if(strcmp(name[i],"RAHUL GANDHI")==0)
+			{
+				printf(" ");
+				printf(name[i]);
+				printf("\t\t\t     ");
+				printf("%d",l);
+			}
+			else if(strcmp(name[i],"NOTA")==0)
+			{
+				printf("     ");
+				printf(name[i]);
+				printf("\t\t\t\t     ");
+				printf("%d",l);	
+			}
+			else if(strcmp(name[i],"NARENDRA MODI")==0)
+			{	
+				printf(" ");
+				printf(name[i]);
+				printf("\t\t\t     ");
+				printf("%d",l);	
+			}
+			else
+			{
+				printf(name[i]);
+				printf("\t\t\t     ");
+				printf("%d",l);
+			}
+		}
+	}
+	printf("\n\n\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");		
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t    ******************* THERE IS A TIE *******************");
+	printf("\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");		
 }
 
 void exit()
