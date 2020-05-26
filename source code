@@ -9,7 +9,7 @@ struct voter_detail
 	char national_id[15];
 	char name[30];
 	char father_name[30];
-	char birth_date[15];
+	char birth_date[11];
 	struct voter_detail *next;
 };
 struct voter_detail voter,*head;
@@ -28,7 +28,7 @@ void end();
 
 int a=0,b=0,c=0,d=0;
 int f[4];
-char id[10];
+char id[11];
 
 int main()
 {
@@ -44,7 +44,7 @@ int main()
 	d=f[3];
 	printf("\n\n");
 	printf("\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n\n");
-	printf("\n        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");	
+	printf("\n        \t\t\t\t\t\t************************** PLEASE ENTER ONE(1) FOR LOGGING VOTE MAIN LOGES **************************\n\n\n");
 	int ch;
 	scanf("%d",&ch);
 	if(ch==1)
@@ -95,7 +95,8 @@ void vote_insert()
 {
 	system("cls");
 	struct voter_detail *temp;
-	char national_id[15],name[30],birth_date[15],father_name[30];
+	temp=NULL;
+	char national_id[15],name[30],birth_date[11],father_name[30];
 	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
 	printf("\n\n");
 	Sleep(400);
@@ -109,7 +110,7 @@ void vote_insert()
 	gets(name);
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t  FATHER'S NAME\t            :: ");
 	gets(father_name);
-	printf("\n\n\t\t\t\t\t\t\t\t\t\t  DATE OF BIRTH(dd-mm-yyyy) :: ");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t  DATE OF BIRTH(dd/mm/yyyy) :: ");
 	gets(birth_date);
 	temp=(struct voter_detail*)malloc(sizeof(voter));
 	strcpy(temp->national_id,national_id);
@@ -125,7 +126,7 @@ void vote_insert()
 		strcmp(temp->national_id,"DEF1237890")==0 && strcmp(temp->name,"Shivam Chauhan")==0 && strcmp(temp->father_name,"Arun Chauhan")==0 && strcmp(temp->birth_date,"08/05/2001")==0 ||
 		strcmp(temp->national_id,"GHI4987810")==0 && strcmp(temp->name,"Jayesh Agarwal")==0 && strcmp(temp->father_name,"Anil Agarwal")==0 && strcmp(temp->birth_date,"05/02/1996")==0 ||
 		strcmp(temp->national_id,"FEG9562820")==0 && strcmp(temp->name,"Akshay Sharma")==0 && strcmp(temp->father_name,"Ajit Sharma")==0 && strcmp(temp->birth_date,"03/06/1997")==0 ||
-		strcmp(temp->national_id,"JLK8867370")==0 && strcmp(temp->name,"Rahul Mittal")==0 && strcmp(temp->father_name,"Manoj Mittal")==0 && strcmp(temp->birth_date,"21/04/2000")==0 ||	
+		strcmp(temp->national_id,"JLK8867370")==0 && strcmp(temp->name,"Rahul Mittal")==0 && strcmp(temp->father_name,"Manoj Mittal")==0 && strcmp(temp->birth_date,"21/04/2000")==0 ||
 		strcmp(temp->national_id,"ZAB4987460")==0 && strcmp(temp->name,"Keshav Goel")==0 && strcmp(temp->father_name,"Umesh Goel")==0 && strcmp(temp->birth_date,"23/09/1998")==0 ||
 		strcmp(temp->national_id,"BGH4666590")==0 && strcmp(temp->name,"Neha Bansal")==0 && strcmp(temp->father_name,"Virat Bansal")==0 && strcmp(temp->birth_date,"16/07/1994")==0 ||
 		strcmp(temp->national_id,"ERI8956280")==0 && strcmp(temp->name,"Radha Yadav")==0 && strcmp(temp->father_name,"Mohit Yadav")==0 && strcmp(temp->birth_date,"24/01/2000")==0 ||
@@ -142,12 +143,12 @@ void vote_insert()
 			if(z==0)
 			{
 				voting();
-			
+
 			}
 			else
 			{
 				given();
-			}	
+			}
 		}
 		else
 		{
@@ -168,12 +169,12 @@ void vote_insert()
 int check()
 {
 	int i,flag=0;
-	
+
 	FILE *fptr;
 	fptr=fopen("VOTING_RECORD.txt","r+");
 	for(i=0;i<15;i++)
-	{	
-		char c[10];
+	{
+		char c[11];
 		fscanf(fptr,"%s",c);
 		if(strcmp(c,id)==0)
 		{
@@ -345,12 +346,12 @@ void admin_panel()
 		printf("%c",ch);
 	}
 	p[i]='\0';
-	
+
 	if(strcmp(id,"jatin764")==0 && strcmp(p,"08072001")==0)
 	{
 		system("cls");
 		Sleep(100);
-		printf("\n\n\t\t\t\t\t\t\t\t\t**************************** ACCESS GRANTED ****************************");	
+		printf("\n\n\t\t\t\t\t\t\t\t\t**************************** ACCESS GRANTED ****************************");
 		Sleep(400);
 		printf("\n\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
 		Sleep(350);
@@ -358,7 +359,7 @@ void admin_panel()
 		vote_count();
 	}
 	else
-	{	
+	{
 		system("cls");
 		printf("\n\n\t\t\t\t\t\t\t\t      **************************** INVALID ID OR PASSWORD ****************************");
 		Sleep(400);
@@ -377,7 +378,7 @@ void admin_panel()
 			end();
 		}
 	}
-			
+
 }
 
 void vote_count()
@@ -415,7 +416,7 @@ void vote_count()
 	{
 		end();
 	}
-		
+
 }
 
 void winner()
@@ -439,8 +440,8 @@ void winner()
 		if(w[i]>l)
 		{
 			l=w[i];
-			p=i;	
-		}	
+			p=i;
+		}
 	}
 	for(i=0;i<4;i++)
 	{
@@ -449,9 +450,9 @@ void winner()
 		if(w[i]==l && i!=p)
 		{
 			m[i]=-1;
-			flag++;		
-		}	
-	}	
+			flag++;
+		}
+	}
 	printf("\n\n\t\t\t\t\t\t                    ***************************** NATIONAL VOTING PORTAL *****************************\n\n");
 	Sleep(350);
 	printf("\n\t\t\t\t\t\t\t\t\t    ********************* WINNER OF THE ELECTION *********************");
@@ -473,14 +474,14 @@ void winner()
 		printf("     ");
 		printf(name[p]);
 		printf("\t\t\t\t     ");
-		printf("%d",l);	
+		printf("%d",l);
 	}
 	else if(strcmp(name[p],"NARENDRA MODI")==0)
-	{	
+	{
 		printf(" ");
 		printf(name[p]);
 		printf("\t\t\t     ");
-		printf("%d",l);	
+		printf("%d",l);
 	}
 	else
 	{
@@ -505,7 +506,7 @@ void winner()
 		end();
 	}
 }
-	
+
 void tie(int m[],char name[4][20],int l)
 {
 	int i;
@@ -526,14 +527,14 @@ void tie(int m[],char name[4][20],int l)
 				printf("     ");
 				printf(name[i]);
 				printf("\t\t\t\t     ");
-				printf("%d",l);	
+				printf("%d",l);
 			}
 			else if(strcmp(name[i],"NARENDRA MODI")==0)
-			{	
+			{
 				printf(" ");
 				printf(name[i]);
 				printf("\t\t\t     ");
-				printf("%d",l);	
+				printf("%d",l);
 			}
 			else
 			{
@@ -543,9 +544,9 @@ void tie(int m[],char name[4][20],int l)
 			}
 		}
 	}
-	printf("\n\n\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");		
+	printf("\n\n\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t    ******************* THERE IS A TIE *******************");
-	printf("\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");		
+	printf("\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");
 }
 
 void end()
