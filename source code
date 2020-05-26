@@ -9,7 +9,7 @@ struct voter_detail
 	char national_id[15];
 	char name[30];
 	char father_name[30];
-	char birth_date[10];
+	char birth_date[15];
 	struct voter_detail *next;
 };
 struct voter_detail voter,*head;
@@ -95,21 +95,21 @@ void vote_insert()
 {
 	system("cls");
 	struct voter_detail *temp;
-	char national_id[15],name[30],birth_date[10],father_name[30];
+	char national_id[15],name[30],birth_date[15],father_name[30];
 	printf("\n\n\t\t\t\t\t\t                 ********************* WELCOME TO NATIONAL VOTING PORTAL *********************\n");
 	printf("\n\n");
 	Sleep(400);
 	printf("\t\t\t\t\t\t        ************************ PLEASE ENTER FOLLOWING CREDENTIALS TO GIVE VOTE ************************\n\n");
 	Sleep(350);
+	fflush(stdin);
 	printf("\n\t\t\t\t\t\t\t\t\t\t");
 	printf("  NATIONAL ID\t            :: ");
-	gets(national_id);
 	gets(national_id);
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t  NAME\t\t            :: ");
 	gets(name);
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t  FATHER'S NAME\t            :: ");
 	gets(father_name);
-	printf("\n\n\t\t\t\t\t\t\t\t\t\t  DATE OF BIRTH(dd/mm/yyyy) :: ");
+	printf("\n\n\t\t\t\t\t\t\t\t\t\t  DATE OF BIRTH(dd-mm-yyyy) :: ");
 	gets(birth_date);
 	temp=(struct voter_detail*)malloc(sizeof(voter));
 	strcpy(temp->national_id,national_id);
@@ -123,7 +123,6 @@ void vote_insert()
 	{
 		if(strcmp(temp->national_id,"ABC4567890")==0 && strcmp(temp->name,"Rohan Bansal")==0 && strcmp(temp->father_name,"Ajay Bansal")==0 && strcmp(temp->birth_date,"05/09/2000")==0 ||
 		strcmp(temp->national_id,"DEF1237890")==0 && strcmp(temp->name,"Shivam Chauhan")==0 && strcmp(temp->father_name,"Arun Chauhan")==0 && strcmp(temp->birth_date,"08/05/2001")==0 ||
-		strcmp(temp->national_id,"D")==0 && strcmp(temp->name,"E")==0 && strcmp(temp->father_name,"F")==0 && strcmp(temp->birth_date,"G")==0 ||
 		strcmp(temp->national_id,"GHI4987810")==0 && strcmp(temp->name,"Jayesh Agarwal")==0 && strcmp(temp->father_name,"Anil Agarwal")==0 && strcmp(temp->birth_date,"05/02/1996")==0 ||
 		strcmp(temp->national_id,"FEG9562820")==0 && strcmp(temp->name,"Akshay Sharma")==0 && strcmp(temp->father_name,"Ajit Sharma")==0 && strcmp(temp->birth_date,"03/06/1997")==0 ||
 		strcmp(temp->national_id,"JLK8867370")==0 && strcmp(temp->name,"Rahul Mittal")==0 && strcmp(temp->father_name,"Manoj Mittal")==0 && strcmp(temp->birth_date,"21/04/2000")==0 ||	
