@@ -160,7 +160,7 @@ void vote_insert()
 			if(x==1)
 			vote_insert();
 			else if(x==0)
-			main_loges;
+			main_loges();
 		}
 		temp=temp->next;
 	}
