@@ -14,21 +14,27 @@ struct voter_detail
 };
 struct voter_detail voter,*head;
 
-void main_loges();
-void vote_insert();
-int check();
-void given();
-void voting();
-void congratulation();
-void admin_panel();
-void vote_count();
-void winner();
-void tie(int[],char[][20],int);
-void end();
 
-int a=0,b=0,c=0,d=0;
-int f[4];
-char id[11];
+					/* functions declaration */
+
+
+void main_loges();					/*main loges panel*/
+void vote_insert();					/*vote insert panel*/
+int check();						/* checking of already vote given or not*/
+void given();						/*already given vote*/
+void voting();						/*accept the vote*/
+void congratulation();				/*successfully given the vote*/
+void admin_panel();					/*authorized panel*/
+void vote_count();					/*record of vote count in authorized panel*/
+void winner();						/*winner of election*/
+void tie(int[],char[][20],int);		/*to check whether there is tie in election or not*/
+void end();							/*exit panel*/
+
+
+int a=0,b=0,c=0,d=0;	/* vote count variables */
+int f[4];				/*array to store vote count from file*/
+char id[11];			/*national id variable*/
+
 
 int main()
 {
@@ -51,8 +57,10 @@ int main()
 	{
 		main_loges();
 	}
-	return 0;
+    return 0;
 }
+
+					/*main loges*/
 
 void main_loges()
 {
@@ -91,6 +99,8 @@ void main_loges()
 	}
 }
 
+					/* vote insert panel */
+
 void vote_insert()
 {
 	system("cls");
@@ -120,6 +130,9 @@ void vote_insert()
 	strcpy(temp->birth_date,birth_date);
 	temp->next=NULL;
 	head=temp;
+
+					/* matching entered credentials with database */
+
 	while(temp!=NULL)
 	{
 		if(strcmp(temp->national_id,"ABC4567890")==0 && strcmp(temp->name,"Rohan Bansal")==0 && strcmp(temp->father_name,"Ajay Bansal")==0 && strcmp(temp->birth_date,"05/09/2000")==0 ||
@@ -136,18 +149,18 @@ void vote_insert()
 		strcmp(temp->national_id,"LMJ1986257")==0 && strcmp(temp->name,"Naman Singh")==0 && strcmp(temp->father_name,"Mahesh Singh")==0 && strcmp(temp->birth_date,"28/02/1993")==0 ||
 		strcmp(temp->national_id,"MLX4697258")==0 && strcmp(temp->name,"Vansh Bansal")==0 && strcmp(temp->father_name,"Ram Bansal")==0 && strcmp(temp->birth_date,"18/06/1996")==0 ||
 		strcmp(temp->national_id,"ERG9682359")==0 && strcmp(temp->name,"Radhika Kansal")==0 && strcmp(temp->father_name,"Pawan Kansal")==0 && strcmp(temp->birth_date,"27/03/1991")==0 ||
-		strcmp(temp->national_id,"CNB6597895")==0 && strcmp(temp->name,"Priya Goel")==0 && strcmp(temp->father_name,"Raj Goel ")==0 && strcmp(temp->birth_date,"25/09/1992")==0)
+		strcmp(temp->national_id,"CNB6597895")==0 && strcmp(temp->name,"Priya Goel")==0 && strcmp(temp->father_name,"Raj Goel")==0 && strcmp(temp->birth_date,"25/09/1992")==0)
 		{
 			int z;
-			z=check();
+			z=check();		/* checking of already vote given or not  */
 			if(z==0)
 			{
-				voting();
+				voting();	/* accept the vote */
 
 			}
 			else
 			{
-				given();
+				given();	/* already given vote */
 			}
 		}
 		else
@@ -165,6 +178,8 @@ void vote_insert()
 		temp=temp->next;
 	}
 }
+
+					/* checking of already vote given or not  */
 
 int check()
 {
@@ -191,8 +206,9 @@ int check()
 	{
 		return 1;
 	}
+return 1;
 }
-
+					/* already given vote */
 void given()
 {
 	system("cls");
@@ -218,6 +234,8 @@ void given()
 		end();
 	}
 }
+
+					/* accepting the vote */
 
 void voting()
 {
@@ -291,6 +309,7 @@ void voting()
 		else if(x==0)
 		main_loges();
 	}
+					/*updating vote count in file */
 	FILE *fp;
 	fp=fopen("VOTE_COUNT.txt","w+");
 	fprintf(fp,"%d",a);
@@ -308,6 +327,8 @@ void voting()
 	}
 }
 
+					/*vote given successfully*/
+
 void congratulation()
 {
 	system("cls");
@@ -322,6 +343,8 @@ void congratulation()
 	Sleep(350);
 	printf("\n\n\t\t\t\t\t\t\t\t\t             *************** HAVE A NICE DAY ***************");
 }
+
+					/*admin panel*/
 
 void admin_panel()
 {
@@ -381,6 +404,8 @@ void admin_panel()
 
 }
 
+					/* display of vote count in admin panel*/
+
 void vote_count()
 {
 	Sleep(400);
@@ -418,6 +443,8 @@ void vote_count()
 	}
 
 }
+
+					/*winner of election*/
 
 void winner()
 {
@@ -507,6 +534,8 @@ void winner()
 	}
 }
 
+					/*checking if there is tie in election*/
+
 void tie(int m[],char name[4][20],int l)
 {
 	int i;
@@ -548,6 +577,8 @@ void tie(int m[],char name[4][20],int l)
 	printf("\n\n\t\t\t\t\t\t\t\t\t\t    ******************* THERE IS A TIE *******************");
 	printf("\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");
 }
+
+					/* end function */
 
 void end()
 {
