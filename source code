@@ -24,7 +24,7 @@ void admin_panel();
 void vote_count();
 void winner();
 void tie(int[],char[][20],int);
-void exit();
+void end();
 
 int a=0,b=0,c=0,d=0;
 int f[4];
@@ -87,7 +87,7 @@ void main_loges()
 	}
 	else if(n==4)
 	{
-		exit();
+		end();
 	}
 }
 
@@ -215,7 +215,7 @@ void given()
 	}
 	else if(x==0)
 	{
-		exit();
+		end();
 	}
 }
 
@@ -375,7 +375,7 @@ void admin_panel()
 		}
 		else if(x==0)
 		{
-			exit();
+			end();
 		}
 	}
 			
@@ -414,7 +414,7 @@ void vote_count()
 	}
 	else if(x==0)
 	{
-		exit();
+		end();
 	}
 		
 }
@@ -503,7 +503,7 @@ void winner()
 	}
 	else if(x==0)
 	{
-		exit();
+		end();
 	}
 }
 	
@@ -549,7 +549,7 @@ void tie(int m[],char name[4][20],int l)
 	printf("\n\n\t\t\t\t\t\t\t\t\t------------------------------------------------------------------------------");		
 }
 
-void exit()
+void end()
 {
 	system("cls");
 	Sleep(150);
